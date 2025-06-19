@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("./assets/Raleway-Medium.ttf");
+}
+
+@theme {
+  --color-primary: #023e8a;
+  --color-secondary: #0077b6;
+  --color-tertiary: #0096c7;
+  --color-accent: #00b4d8;
+  --color-light: #48cae4;
+  --color-lightest: #90e0ef;
+  --color-background: #f8f9fa;
+  --color-text: #212529;
+  --font-header: "Raleway", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-header);
+  background-image: radial-gradient(hsla(205, 96%, 28%, 0.1) 0.8px, transparent 0.8px);
+  background-size: 12px 12px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-tertiary);
+  border-radius: 5px;
+  border: 2px solid var(--color-tertiary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+}
+
+.animated-component {
+  opacity: 0;
+  transition: opacity 1s, transform 1s;
+}
+
+.is-visible {
+  opacity: 1;
+  transform: none;
+}
