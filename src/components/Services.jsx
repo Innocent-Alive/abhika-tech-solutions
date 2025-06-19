@@ -29,7 +29,7 @@ const Services = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {services.map((service, index) => (
-            <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+            <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border-b-4 border-transparent hover:border-accent">
               <div className="text-accent text-5xl mb-6 flex justify-center transform group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
               <h3 className="text-2xl font-bold text-primary mb-3">{service.title}</h3>
               <p className="text-gray-600 leading-relaxed">{service.description}</p>
