@@ -1,5 +1,10 @@
-import React from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { FaGithub, FaLinkedin, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const teamMembers = [
   {
@@ -29,11 +34,20 @@ const teamMembers = [
       linkedin: "#",
     },
   },
+  {
+    name: "Vaibhav Pednekar",
+    role: "Software Engineer & Tester",
+    imageUrl: "https://avatars.githubusercontent.com/u/127613982?v=4",
+    social: {
+      github: "#",
+      linkedin: "#",
+    },
+  },
 ];
 
-const TeamCard = ({ member }) => (
-  <div className="bg-white rounded-xl shadow-lg overflow-hidden text-center group transform hover:-translate-y-2 transition-all duration-300 ease-in-out hover:shadow-2xl">
-    <div className="relative h-56">
+const TeamCard = ({ member }) => (  
+    <div className="bg-background mb-10 mt-4 rounded-xl shadow-md overflow-hidden text-center group transform transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-secondary/20 border-2 border-transparent hover:border-secondary hover:-translate-y-1">
+    <div className="relative h-56 rounded-t-xl overflow-hidden">
       <img
         className="w-full h-full object-cover object-center"
         src={member.imageUrl}
@@ -42,18 +56,18 @@ const TeamCard = ({ member }) => (
       <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
     </div>
     <div className="p-6">
-      <h3 className="text-2xl font-bold text-primary mb-1">{member.name}</h3>
-      <p className="text-md text-accent font-semibold">{member.role}</p>
+      <h3 className="text-2xl font-bold text-primary mb-1 group-hover:text-secondary transition-colors duration-300">{member.name}</h3>
+      <p className="text-md text-text font-semibold">{member.role}</p>
       <div className="flex justify-center space-x-4 mt-4">
         <a
           href={member.social.github}
-          className="text-gray-500 hover:text-primary transition-colors duration-300"
+          className="text-text hover:text-secondary transition-colors duration-300"
         >
           <FaGithub size={24} />
         </a>
         <a
           href={member.social.linkedin}
-          className="text-gray-500 hover:text-primary transition-colors duration-300"
+          className="text-text hover:text-secondary transition-colors duration-300"
         >
           <FaLinkedin size={24} />
         </a>
@@ -63,17 +77,50 @@ const TeamCard = ({ member }) => (
 );
 
 const Team = () => {
+  const swiperRef = useRef(null);
   return (
-    <section id="team" className="bg-gray-50 py-20">
+    <section id="team" className="bg-background py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-primary">Meet Our Team</h2>
           <p className="text-secondary mt-2">The Minds Behind the Magic</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {teamMembers.map((member, index) => (
-            <TeamCard key={index} member={member} />
-          ))}
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Pagination, A11y]}
+            spaceBetween={30}
+            slidesPerView={1}
+
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            breakpoints={{
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="pb-12"
+          >
+            {teamMembers.map((member, index) => (
+              <SwiperSlide key={index}>
+                <TeamCard member={member} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div onClick={() => swiperRef.current?.slidePrev()} className="swiper-button-prev-custom absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-left-8">
+            <FaArrowLeft size={24} />
+          </div>
+          <div onClick={() => swiperRef.current?.slideNext()} className="swiper-button-next-custom absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-right-8">
+            <FaArrowRight size={24} />
+          </div>
+
         </div>
       </div>
     </section>

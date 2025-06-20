@@ -6,13 +6,10 @@
 }
 
 @theme {
-  --color-primary: #023e8a;
-  --color-secondary: #0077b6;
-  --color-tertiary: #0096c7;
-  --color-accent: #00b4d8;
-  --color-light: #48cae4;
-  --color-lightest: #90e0ef;
-  --color-background: #f8f9fa;
+  --color-primary: #008080;
+  --color-secondary: #F4A261;
+  --color-tertiary: #00ced1;
+  --color-background: #F5F9F9;
   --color-text: #212529;
   --font-header: "Raleway", sans-serif;
 }
@@ -58,4 +55,28 @@ body {
 .is-visible {
   opacity: 1;
   transform: none;
+}
+
+@keyframes animatedGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+    -45deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-tertiary),
+    var(--color-primary)
+  );
+  animation: animatedGradient 15s ease infinite;
 }

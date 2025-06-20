@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Team from './components/Team';
+import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
@@ -58,6 +59,7 @@ const App = () => {
         <div className="animated-section"><About /></div>
         <div className="animated-section"><Services /></div>
         <div className="animated-section"><Team /></div>
+        <div className="animated-section"><Testimonials /></div>
         <div className="animated-section"><Contact /></div>
       </main>
       <Footer />
