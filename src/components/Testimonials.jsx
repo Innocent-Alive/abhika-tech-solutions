@@ -1,26 +1,29 @@
-import React, { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, A11y } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { FaQuoteLeft, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const testimonials = [
   {
-    quote: "Abhika Tech Solutions delivered a stunning website that exceeded our expectations. Their attention to detail and creative vision are unparalleled.",
+    quote:
+      "Abhika Tech Solutions delivered a stunning website that exceeded our expectations. Their attention to detail and creative vision are unparalleled.",
     name: "John Doe",
     title: "CEO, Tech Innovators",
     imageUrl: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    quote: "The team was professional, responsive, and incredibly talented. They transformed our online presence and boosted our engagement significantly.",
+    quote:
+      "The team was professional, responsive, and incredibly talented. They transformed our online presence and boosted our engagement significantly.",
     name: "Jane Smith",
     title: "Marketing Director, Creative Co.",
     imageUrl: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
-    quote: "Working with Abhika Tech was a breeze. They understood our needs perfectly and delivered a high-quality product on time and within budget.",
+    quote:
+      "Working with Abhika Tech was a breeze. They understood our needs perfectly and delivered a high-quality product on time and within budget.",
     name: "Sam Wilson",
     title: "Founder, Startup Hub",
     imageUrl: "https://randomuser.me/api/portraits/men/46.jpg",
@@ -32,7 +35,11 @@ const TestimonialCard = ({ testimonial }) => (
     <FaQuoteLeft className="text-secondary text-4xl mx-auto mb-4" />
     <p className="text-text italic mb-6 flex-grow">\"{testimonial.quote}\"</p>
     <div className="mt-auto">
-      <img src={testimonial.imageUrl} alt={testimonial.name} className="w-16 h-16 rounded-full mx-auto mb-4 border-4 border-secondary" />
+      <img
+        src={testimonial.imageUrl}
+        alt={testimonial.name}
+        className="w-16 h-16 rounded-full mx-auto mb-4 border-4 border-secondary"
+      />
       <h4 className="font-bold text-primary text-lg">{testimonial.name}</h4>
       <p className="text-sm text-text/80">{testimonial.title}</p>
     </div>
@@ -42,11 +49,15 @@ const TestimonialCard = ({ testimonial }) => (
 const Testimonials = () => {
   const swiperRef = useRef(null);
   return (
-    <section id="testimonials" className="bg-gray-50 py-20 overflow-hidden">
+    <section id="testimonial" className="bg-gray-50 py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-primary">What Our Clients Say</h2>
-          <p className="text-secondary mt-2">Success Stories from Our Partners</p>
+          <h2 className="text-4xl font-bold text-primary">
+            What Our Clients Say
+          </h2>
+          <p className="text-secondary mt-2">
+            Success Stories from Our Partners
+          </p>
         </div>
         <div className="relative">
           <Swiper
@@ -55,13 +66,13 @@ const Testimonials = () => {
             slidesPerView={1}
             pagination={{ clickable: true }}
             navigation={{
-              nextEl: '.testimonial-swiper-button-next',
-              prevEl: '.testimonial-swiper-button-prev',
+              nextEl: ".testimonial-swiper-button-next",
+              prevEl: ".testimonial-swiper-button-prev",
             }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
-             breakpoints={{
+            breakpoints={{
               768: {
                 slidesPerView: 2,
               },
@@ -77,10 +88,16 @@ const Testimonials = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-           <div onClick={() => swiperRef.current?.slidePrev()} className="testimonial-swiper-button-prev absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-left-8">
+          <div
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="testimonial-swiper-button-prev absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-left-8"
+          >
             <FaArrowLeft size={24} />
           </div>
-          <div onClick={() => swiperRef.current?.slideNext()} className="testimonial-swiper-button-next absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-right-8">
+          <div
+            onClick={() => swiperRef.current?.slideNext()}
+            className="testimonial-swiper-button-next absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-right-8"
+          >
             <FaArrowRight size={24} />
           </div>
         </div>

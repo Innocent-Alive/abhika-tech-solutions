@@ -1,28 +1,33 @@
-import React, { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, A11y } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { FaGithub, FaLinkedin, FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaArrowLeft,
+  FaArrowRight,
+} from "react-icons/fa";
 
 const teamMembers = [
   {
     name: "Abhay Kumar Das",
     role: "Founder & Full-Stack Developer",
-    imageUrl: "https://i.ibb.co/g9TrsVf/Abhay-Kumar-Das.jpg",
+    imageUrl: "https://avatars.githubusercontent.com/u/120706732?v=4",
     social: {
       github: "https://github.com/Abhay-Kumar-Das",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/innocent-alive/",
     },
   },
   {
     name: "Harshika Gawade",
     role: "Lead Frontend Developer",
-    imageUrl: "https://avatars.githubusercontent.com/u/115694819?v=4",
+    imageUrl: "https://avatars.githubusercontent.com/u/110835926?v=4",
     social: {
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/9102004Harshika/",
+      linkedin: "https://www.linkedin.com/in/harshikagawade/",
     },
   },
   {
@@ -30,33 +35,36 @@ const teamMembers = [
     role: "UI/UX & Frontend Developer",
     imageUrl: "https://avatars.githubusercontent.com/u/127613982?v=4",
     social: {
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/palakash26",
+      linkedin: "https://www.linkedin.com/in/akash-pal-29b198279/",
     },
   },
   {
     name: "Vaibhav Pednekar",
     role: "Software Engineer & Tester",
-    imageUrl: "https://avatars.githubusercontent.com/u/127613982?v=4",
+    imageUrl: "https://avatars.githubusercontent.com/u/10902969?v=4",
     social: {
       github: "#",
-      linkedin: "#",
+      linkedin: "http://www.linkedin.com/in/vaibhav-pednekar-96a625330",
     },
   },
 ];
 
-const TeamCard = ({ member }) => (  
-    <div className="bg-background mb-10 mt-4 rounded-xl shadow-md overflow-hidden text-center group transform transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-secondary/20 border-2 border-transparent hover:border-secondary hover:-translate-y-1">
-    <div className="relative h-56 rounded-t-xl overflow-hidden">
-      <img
-        className="w-full h-full object-cover object-center"
-        src={member.imageUrl}
-        alt={member.name}
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300"></div>
+const TeamCard = ({ member }) => (
+  <div className="bg-background mb-10 mt-4 rounded-xl shadow-md overflow-hidden text-center group transform transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-secondary/20 border-2 border-transparent hover:border-secondary hover:-translate-y-1">
+    <div className="relative h-52 rounded-t-xl overflow-hidden">
+      <div className="rounded-full w-40 h-40 mx-auto mt-10 bg-primary border-2 border-primary shadow-lg overflow-hidden group-hover:border-secondary transition-colors duration-300">
+        <img
+          className="w-full h-full object-cover object-top"
+          src={member.imageUrl}
+          alt={member.name}
+        />
+      </div>
     </div>
     <div className="p-6">
-      <h3 className="text-2xl font-bold text-primary mb-1 group-hover:text-secondary transition-colors duration-300">{member.name}</h3>
+      <h3 className="text-2xl font-bold text-primary mb-1 group-hover:text-secondary transition-colors duration-300">
+        {member.name}
+      </h3>
       <p className="text-md text-text font-semibold">{member.role}</p>
       <div className="flex justify-center space-x-4 mt-4">
         <a
@@ -90,10 +98,9 @@ const Team = () => {
             modules={[Navigation, Pagination, A11y]}
             spaceBetween={30}
             slidesPerView={1}
-
             navigation={{
-              nextEl: '.swiper-button-next-custom',
-              prevEl: '.swiper-button-prev-custom',
+              nextEl: ".swiper-button-next-custom",
+              prevEl: ".swiper-button-prev-custom",
             }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
@@ -114,13 +121,18 @@ const Team = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div onClick={() => swiperRef.current?.slidePrev()} className="swiper-button-prev-custom absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-left-8">
+          <div
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="swiper-button-prev-custom absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-left-8"
+          >
             <FaArrowLeft size={24} />
           </div>
-          <div onClick={() => swiperRef.current?.slideNext()} className="swiper-button-next-custom absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-right-8">
+          <div
+            onClick={() => swiperRef.current?.slideNext()}
+            className="swiper-button-next-custom absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-right-8"
+          >
             <FaArrowRight size={24} />
           </div>
-
         </div>
       </div>
     </section>
