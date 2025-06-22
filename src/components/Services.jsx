@@ -27,8 +27,8 @@ const Services = () => {
     <section id="services" className="py-20 bg-tertiary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-background">Our Services</h2>
-          <p className="text-secondary mt-2">What We Offer</p>
+          <h2 className="text-4xl font-bold text-primary">Our Services</h2>
+          <p className="text-white mt-2">What We Offer</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {services.map((service, index) => (

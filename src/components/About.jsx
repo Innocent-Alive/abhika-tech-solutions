@@ -5,10 +5,10 @@ const About = () => {
     <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-primary">About Abhika Tech Solution</h2>
-          <p className="text-secondary mt-2">Our Mission, Vision, and Values</p>
+          <h2 className="text-4xl font-bold font-header text-primary">About Abhika Tech Solution</h2>
+          <p className="text-secondary font-body mt-2">Our Mission, Vision, and Values</p>
         </div>
-        <div className="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
+        <div className="max-w- font-body mx-auto text-lg text-text leading-relaxed">
           <p className="mb-4">
             At Abhika Tech Solution, we are driven by a singular mission: to empower businesses with transformative technology that fuels innovation and propels growth. We firmly believe that a meticulously crafted software solution can be a pivotal game-changer, unlocking untapped potential and paving the way for sustained success. Our dedicated team of passionate developers, visionary designers, and astute strategists collaborates seamlessly, transforming intricate challenges into elegant, scalable, and exceptionally user-friendly applications. We thrive on pushing boundaries and delivering excellence in every project we undertake.
           </p>
