@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Projects from "./components/Projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,6 +68,9 @@ const App = () => {
         </div>
         <div className="animated-section">
           <Team />
+        </div>
+        <div className="animated-section">
+          <Projects />
         </div>
         <div className="animated-section">
           <Testimonials />
