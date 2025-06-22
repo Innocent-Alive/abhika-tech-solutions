@@ -149,7 +149,7 @@ const Hero = () => {
             <a
               ref={buttonRef}
               href="#services"
-              className="inline-block font-semibold py-4 px-10 rounded-lg border transition-all transform hover:scale-105 duration-300 shadow-xl text-lg hover:shadow-2x text-white bg-secondary hover:bg-primary"
+              className="inline-block font-semibold py-4 px-10 rounded-lg border transition-all transform hover:scale-105 duration-300 shadow-xl text-lg hover:shadow-2x text-white bg-primary hover:bg-secondary"
             >
               Explore Our Services
             </a>
