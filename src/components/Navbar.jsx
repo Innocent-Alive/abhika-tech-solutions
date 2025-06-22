@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [scrolled, setScrolled] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Adjust the threshold if needed
+      setScrolled(scrollY > 100); 
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { href: '#home', text: 'Home' },
@@ -17,14 +27,32 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="bg-primary/90 backdrop-blur-md text-white shadow-lg sticky top-0 z-50">
+    <header
+    className={`fixed w-full top-0 z-50 transition-all duration-100 ${
+      scrolled
+        ? 'bg-primary/90 backdrop-blur-sm shadow-lg text-white'
+        : 'bg-transparent text-background'
+    }`}
+  >
+  
       <div className="container mx-auto flex justify-between items-center p-3 md:p-4">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider">
-          <a href="#home" className="hover:text-secondary transition-colors duration-300">Abhika Tech Solution</a>
+          <a href="#home" className="hover:text-secondary transition-colors duration-300">ATS.</a>
         </h1>
         <nav className="hidden md:flex space-x-6">
           {navLinks.map(link => (
-            <a key={link.href} href={link.href} className="relative text-lg text-white hover:text-secondary transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full">{link.text}</a>
+            <a
+            key={link.href}
+            href={link.href}
+            className={`relative text-lg ${
+              scrolled ? 'text-background' : 'text-background font-bold'
+            } hover:text-secondary transition-colors duration-300
+              after:content-[''] after:absolute after:left-0 after:bottom-[-5px]
+              after:h-[2px] after:w-0 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full`}
+          >
+            {link.text}.
+          </a>
+          
           ))}
         </nav>
         <div className="md:hidden">
