@@ -49,7 +49,7 @@ const TestimonialCard = ({ testimonial }) => (
 const Testimonials = () => {
   const swiperRef = useRef(null);
   return (
-    <section id="testimonial" className="bg-gray-50 py-20 overflow-hidden">
+    <section id="testimonial" className="bg-background py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-primary">

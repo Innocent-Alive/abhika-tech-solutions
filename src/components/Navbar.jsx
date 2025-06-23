@@ -23,14 +23,15 @@ const Navbar = () => {
     { href: '#about', text: 'About' },
     { href: '#services', text: 'Services' },
     { href: '#team', text: 'Team' },
+    {href:'#projects',text:'Projects'},
     { href: '#contact', text: 'Contact' },
   ];
 
   return (
     <header
-    className={`fixed w-full top-0 z-50 transition-all duration-100 ${
+    className={`fixed w-full top-0 z-50 transition-all duration-50 ${
       scrolled
-        ? 'bg-primary/90 backdrop-blur-sm shadow-lg text-white'
+        ? 'bg-primary/90 backdrop-blur-xl shadow-lg text-white'
         : 'bg-transparent text-background'
     }`}
   >
@@ -45,7 +46,7 @@ const Navbar = () => {
             key={link.href}
             href={link.href}
             className={`relative text-lg ${
-              scrolled ? 'text-background' : 'text-background font-bold'
+              scrolled ? 'text-background font-bold' : 'text-background font-bold'
             } hover:text-secondary transition-colors duration-300
               after:content-[''] after:absolute after:left-0 after:bottom-[-5px]
               after:h-[2px] after:w-0 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full`}

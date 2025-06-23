@@ -285,7 +285,7 @@ const Hero = () => {
         <div className="container mx-auto px-4 text-center z-10">
           <h1
             ref={headlineRef}
-            className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight h-32 md:h-48 flex flex-col justify-center items-center mx-auto opacity-0 text-background"
+            className="text-5xl md:text-7xl font-extrabold mb-6 font-header leading-tight tracking-tight h-32 md:h-48 flex flex-col justify-center items-center mx-auto opacity-0 text-background"
           >
             <Typewriter
               options={{
@@ -303,7 +303,7 @@ const Hero = () => {
           </h1>
           <p
             ref={subheadlineRef}
-            className="max-w-3xl mx-auto text-lg md:text-xl mb-10 leading-relaxed text-text"
+            className="max-w-3xl mx-auto font-body text-lg md:text-xl mb-10 leading-relaxed text-text"
           >
             We are dedicated to engineering cutting-edge software solutions that
             propel businesses forward, from visionary concepts to tangible
