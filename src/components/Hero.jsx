@@ -115,70 +115,70 @@ const Hero = () => {
           height: 900px;
           top: -25%;
           left: -25%;
-          animation: moveBlob1 20s ease-in-out infinite alternate;
+          animation: moveBlob1 0.5s ease-in-out infinite alternate;
         }
         .blob2 {
           width: 800px;
           height: 800px;
           bottom: -20%;
           right: -20%;
-          animation: moveBlob2 25s ease-in-out infinite alternate-reverse;
+          animation: moveBlob2 0.6s ease-in-out infinite alternate-reverse;
         }
         .blob3 {
           width: 700px;
           height: 700px;
           top: 30%;
           left: 10%;
-          animation: moveBlob3 22s ease-in-out infinite alternate;
+          animation: moveBlob3 0.7s ease-in-out infinite alternate;
         }
         .blob4 {
           width: 650px;
           height: 650px;
           bottom: 5%;
           left: 40%;
-          animation: moveBlob4 28s ease-in-out infinite alternate-reverse;
+          animation: moveBlob4 0.8s ease-in-out infinite alternate-reverse;
         }
         .blob5 {
           width: 600px;
           height: 600px;
           top: 15%;
           right: 20%;
-          animation: moveBlob5 26s ease-in-out infinite alternate;
+          animation: moveBlob5 0.9s ease-in-out infinite alternate;
         }
         .blob6 {
           width: 500px;
           height: 500px;
           bottom: 25%;
           left: 20%;
-          animation: moveBlob6 24s ease-in-out infinite alternate-reverse;
+          animation: moveBlob6 1.0s ease-in-out infinite alternate-reverse;
         }
         .blob7 {
           width: 550px;
           height: 550px;
           top: 60%;
           right: 10%;
-          animation: moveBlob7 30s ease-in-out infinite alternate;
+          animation: moveBlob7 1.1s ease-in-out infinite alternate;
         }
         .blob8 {
           width: 450px;
           height: 450px;
           bottom: 10%;
           right: 30%;
-          animation: moveBlob8 32s ease-in-out infinite alternate-reverse;
+          animation: moveBlob8 1.2s ease-in-out infinite alternate-reverse;
         }
         .blob9 {
           width: 500px;
           height: 500px;
           top: 50%;
           left: 5%;
-          animation: moveBlob9 34s ease-in-out infinite alternate;
+          animation: moveBlob9 1.3s ease-in-out infinite alternate;
         }
         .blob10 {
           width: 400px;
           height: 400px;
           bottom: 40%;
           right: 10%;
-          animation: moveBlob10 36s ease-in-out infinite alternate-reverse;
+          animation: moveBlob10 1.4s ease-in-out infinite alternate-reverse;
         }
 
         @keyframes moveBlob1 {
@@ -326,3 +326,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
