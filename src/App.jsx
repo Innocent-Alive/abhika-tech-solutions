@@ -11,6 +11,7 @@ import Loader from "./components/Loader";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Projects from "./components/Projects";
+import FAQ from "./components/FAQ";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,8 +77,12 @@ const App = () => {
           <Testimonials />
         </div>
         <div className="animated-section">
+          <FAQ />
+        </div>
+        <div className="animated-section">
           <Contact />
         </div>
+        
       </main>
       <Footer />
     </div>

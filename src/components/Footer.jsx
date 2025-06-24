@@ -17,7 +17,8 @@ const Footer = () => {
             <p className="text-secondary">Crafting Digital Excellence</p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-semibold mb-4 ">Quick Links</h3>
+           <div className="flex gap-10"> 
             <ul>
               <li className="mb-2">
                 <a href="#about" className="hover:text-tertiary">
@@ -45,6 +46,24 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+            <ul>
+            <li className="mb-2">
+                <a href="#faqs" className="hover:text-tertiary">
+                  FAQs
+                </a>
+              </li>
+            <li className="mb-2">
+                <a href="#t&c" className="hover:text-tertiary">
+                  Terms & Conditions
+                </a>
+              </li>
+            
+            <li className="mb-2">
+                <a href="#policy" className="hover:text-tertiary">
+                  Our Policies
+                </a>
+              </li>
+            </ul></div>
           </div>
           <div>
             <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
