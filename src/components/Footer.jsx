@@ -6,15 +6,22 @@ import {
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa";
-
+import logo from '../assets/logo.png'
 const Footer = () => {
   return (
     <footer className="bg-primary text-white">
       <div className="container mx-auto py-10 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           <div>
+             <img
+      src={logo}
+      width={150}
+      height={150}
+      alt="logo"
+      className="object-contain rounded-full mb-2 ml-2"
+    />
             <h3 className="text-2xl font-bold mb-2">Abhika Tech Solution</h3>
-            <p className="text-secondary">Crafting Digital Excellence</p>
+            <p className="text-tertiary">Crafting Digital Excellence</p>
           </div>
           <div>
             <h3 className="text-xl font-semibold mb-4 ">Quick Links</h3>
@@ -83,7 +90,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-secondary mt-8 pt-6 text-center text-secondary">
+        <div className="border-t border-tertiary mt-8 pt-6 text-center text-tertiary">
           <p>
             &copy; {new Date().getFullYear()} Abhika Tech Solution. All Rights
             Reserved.
