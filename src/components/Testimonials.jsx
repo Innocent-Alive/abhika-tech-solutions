@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+// ✅ Testimonials.jsx
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
 import "swiper/css";
@@ -33,7 +34,7 @@ const testimonials = [
 const TestimonialCard = ({ testimonial }) => (
   <div className="bg-background p-8 rounded-xl shadow-md text-center h-[450px] flex flex-col justify-between border-2 border-transparent hover:border-tertiary transition-all duration-300 mb-2">
     <FaQuoteLeft className="text-secondary text-4xl mx-auto mb-4" />
-    <p className="text-text italic mb-6 flex-grow">\"{testimonial.quote}\"</p>
+    <p className="text-text italic mb-6 flex-grow">"{testimonial.quote}"</p>
     <div className="mt-auto">
       <img
         src={testimonial.imageUrl}
@@ -48,6 +49,17 @@ const TestimonialCard = ({ testimonial }) => (
 
 const Testimonials = () => {
   const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current?.params?.navigation) {
+      swiperRef.current.params.navigation.prevEl = ".testimonial-swiper-button-prev";
+      swiperRef.current.params.navigation.nextEl = ".testimonial-swiper-button-next";
+      swiperRef.current.navigation.destroy();
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
+
   return (
     <section id="testimonial" className="bg-background py-20 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -64,38 +76,36 @@ const Testimonials = () => {
             modules={[Navigation, Pagination, A11y]}
             spaceBetween={30}
             slidesPerView={1}
+            slidesPerGroup={1}
             pagination={{ clickable: true }}
-            navigation={{
-              nextEl: ".testimonial-swiper-button-next",
-              prevEl: ".testimonial-swiper-button-prev",
-            }}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
             breakpoints={{
               768: {
                 slidesPerView: 2,
+                slidesPerGroup: 1,
               },
               1024: {
                 slidesPerView: 3,
+                slidesPerGroup: 1,
               },
             }}
             className="pb-12"
           >
             {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={index} className="h-auto">
+              <SwiperSlide key={index}>
                 <TestimonialCard testimonial={testimonial} />
               </SwiperSlide>
             ))}
           </Swiper>
+
           <div
-            onClick={() => swiperRef.current?.slidePrev()}
             className="testimonial-swiper-button-prev absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-left-8"
           >
             <FaArrowLeft size={24} />
           </div>
           <div
-            onClick={() => swiperRef.current?.slideNext()}
             className="testimonial-swiper-button-next absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-right-8"
           >
             <FaArrowRight size={24} />
