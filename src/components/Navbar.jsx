@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-
+import logo from "../assets/logo.png"
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -37,10 +37,15 @@ const Navbar = () => {
   >
   
       <div className="container mx-auto flex justify-between items-center p-3 md:p-4">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider">
-          <a href="#home" className="hover:text-secondary transition-colors duration-300">ATS.</a>
-        </h1>
-        <nav className="hidden md:flex space-x-6">
+          <img
+      src={logo}
+      width={50}
+      height={50}
+      alt="logo"
+      className="object-contain rounded-full"
+    />
+       
+        <nav className="hidden md:flex space-x-6 ">
           {navLinks.map(link => (
             <a
             key={link.href}

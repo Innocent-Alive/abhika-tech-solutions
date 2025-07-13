@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+
+import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
 import "swiper/css";
@@ -86,6 +87,20 @@ const TeamCard = ({ member }) => (
 
 const Team = () => {
   const swiperRef = useRef(null);
+  const [isBeginning ,setIsBeginning]=useState(false);
+  const [isEnd, setIsEnd]=useState(false)
+  useEffect(() => {
+    if (swiperRef.current?.params?.navigation) {
+      swiperRef.current.params.navigation.prevEl = ".swiper-button-prev-custom";
+      swiperRef.current.params.navigation.nextEl = ".swiper-button-next-custom";
+      swiperRef.current.navigation.destroy();
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
+console.log(isBeginning);
+console.log(isEnd)
+
   return (
     <section id="team" className="bg-background py-20 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -98,19 +113,23 @@ const Team = () => {
             modules={[Navigation, Pagination, A11y]}
             spaceBetween={30}
             slidesPerView={1}
-            navigation={{
-              nextEl: ".swiper-button-next-custom",
-              prevEl: ".swiper-button-prev-custom",
-            }}
+            slidesPerGroup={1}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
+            }}
+            onSlideChange={(swiper)=>{
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
+
             }}
             breakpoints={{
               768: {
                 slidesPerView: 2,
+                slidesPerGroup: 1,
               },
               1024: {
                 slidesPerView: 3,
+                slidesPerGroup: 1,
               },
             }}
             className="pb-12"
@@ -122,14 +141,16 @@ const Team = () => {
             ))}
           </Swiper>
           <div
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="swiper-button-prev-custom absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-left-8"
+            className={`swiper-button-prev-custom absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 rounded-full  md:-left-8 transition-all duration-300 ${
+              isBeginning ? "opacity-30 cursor-not-allowed bg-gray-900 text-slate-400" : "bg-primary/80 text-white hover:bg-secondary cursor-pointer" 
+            }`}
           >
             <FaArrowLeft size={24} />
           </div>
-          <div
-            onClick={() => swiperRef.current?.slideNext()}
-            className="swiper-button-next-custom absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 bg-primary/80 text-white rounded-full cursor-pointer hover:bg-secondary transition-colors duration-300 md:-right-8"
+         <div
+            className={`swiper-button-next-custom absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 rounded-full  md:-right-8 transition-all duration-300 ${
+              isEnd ? "opacity-30 cursor-not-allowed bg-gray-900 text-slate-400" : "bg-primary/80 text-white hover:bg-secondary cursor-pointer" 
+            }`}
           >
             <FaArrowRight size={24} />
           </div>
