@@ -22,6 +22,16 @@ const teamMembers = [
       linkedin: "https://www.linkedin.com/in/innocent-alive/",
     },
   },
+   {
+    name: "Harshika Gawade",
+    role: "Full-Stack Developer",
+    imageUrl: "https://avatars.githubusercontent.com/u/110835926?v=4",
+    social: {
+      github: "https://github.com/9102004Harshika",
+      linkedin: "https://in.linkedin.com/in/harshikagawade",
+    },
+  },
+   
   {
     name: "Akash Pal",
     role: "UI/UX & Frontend Developer",
@@ -38,6 +48,15 @@ const teamMembers = [
     social: {
       github: "#",
       linkedin: "http://www.linkedin.com/in/vaibhav-pednekar-96a625330",
+    },
+  },
+  {
+    name: "Rishabh Paswan",
+    role: "Business Analyst",
+    imageUrl: "https://avatars.githubusercontent.com/u/135265945",
+    social: {
+      github: "https://github.com/Codehunter108",
+      linkedin: "https://in.linkedin.com/in/rishabh_paswan",
     },
   },
 ];
