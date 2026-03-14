@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaWhatsapp, FaTelegramPlane } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +37,7 @@ const Contact = () => {
 
       const result = await response.json();
       if (result.success) {
-        setButtonText("Sent!");
+        setButtonText("Sent Successfully!");
         setFormData({ name: "", email: "", message: "" });
       } else {
         setButtonText("Failed. Try Again");
@@ -53,11 +53,19 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-20 bg-background relative overflow-hidden">
+      {/* IoAppsOutline Pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.04] pointer-events-none" 
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 512 512'%3E%3Cpath fill='%23007C91' d='M104 160a56 56 0 1156-56 56.06 56.06 0 01-56 56zM256 160a56 56 0 1156-56 56.06 56.06 0 01-56 56zM408 160a56 56 0 1156-56 56.06 56.06 0 01-56 56zM104 312a56 56 0 1156-56 56.06 56.06 0 01-56 56zM256 312a56 56 0 1156-56 56.06 56.06 0 01-56 56zM408 312a56 56 0 1156-56 56.06 56.06 0 01-56 56zM104 464a56 56 0 1156-56 56.06 56.06 0 01-56 56zM256 464a56 56 0 1156-56 56.06 56.06 0 01-56 56zM408 464a56 56 0 1156-56 56.06 56.06 0 01-56 56z'/%3E%3C/svg%3E")`,
+          backgroundSize: '20px 20px' 
+        }}
+      ></div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-primary">Get In Touch</h2>
-          <p className="text-secondary mt-2">We'd love to hear from you!</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary uppercase tracking-tight font-header">Get In Touch</h2>
+          <p className="text-secondary mt-2 text-sm sm:text-base font-body opacity-80">We'd love to hear from you!</p>
         </div>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="bg-primary text-white p-8 rounded-xl shadow-xl">
@@ -83,15 +91,33 @@ const Contact = () => {
                 contact@abhikatechsolution.com
               </span>
             </p>
-            <p className="flex items-start text-sm sm:text-base md:text-lg">
+            <p className="flex items-start text-sm sm:text-base md:text-lg mb-4">
               <FaPhoneAlt
                 className="mr-3 text-white mt-1 flex-shrink-0"
                 size={20}
               />
               <span className="break-words">+91 7710071640</span>
             </p>
+            <p className="flex items-start mb-4 text-sm sm:text-base md:text-lg">
+              <FaWhatsapp
+                className="mr-3 text-white mt-1 flex-shrink-0"
+                size={20}
+              />
+              <a href="https://wa.me/917710071640" target="_blank" rel="noopener noreferrer" className="break-words hover:text-secondary hover:underline transition-colors">
+                Message us on WhatsApp
+              </a>
+            </p>
+            <p className="flex items-start text-sm sm:text-base md:text-lg">
+              <FaTelegramPlane
+                className="mr-3 text-white mt-1 flex-shrink-0"
+                size={20}
+              />
+              <a href="https://t.me/abhikatechsolution" target="_blank" rel="noopener noreferrer" className="break-words hover:text-secondary hover:underline transition-colors">
+                Reach us on Telegram
+              </a>
+            </p>
           </div>
-          <div className="bg-white p-8 rounded-xl shadow-xl">
+          <div className="bg-background border-2 border-primary p-8 rounded-xl shadow-xl">
             <h3 className="text-3xl font-bold text-primary mb-8">
               Send Us a Message
             </h3>
@@ -104,7 +130,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your Name"
                   required
-                  className="w-full p-4 rounded-lg bg-white border-2 placeholder:text-primary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:bg-background active:bg-background transition-all duration-300"
+                  className="w-full p-4 rounded-lg bg-white border-2 placeholder:text-primary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-background active:bg-background transition-all duration-300"
                 />
                 <input
                   type="email"
@@ -113,7 +139,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your Email"
                   required
-                  className="w-full p-4 rounded-lg bg-white border-2 placeholder:text-primary border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:bg-background active:bg-background transition-all duration-300"
+                  className="w-full p-4 rounded-lg bg-white border-2 placeholder:text-primary border-secondary focus:outline-none focus:ring-2 focus:border-transparent focus:ring-primary focus:bg-background active:bg-background transition-all duration-300"
                 />
                 <textarea
                   name="message"
@@ -122,7 +148,7 @@ const Contact = () => {
                   placeholder="Your Message"
                   rows="5"
                   required
-                  className="w-full p-4 rounded-lg bg-white placeholder:text-primary border-2 border-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:bg-background active:bg-background transition-all duration-300"
+                  className="w-full p-4 rounded-lg bg-white placeholder:text-primary border-2 border-secondary focus:outline-none focus:ring-2 focus:border-transparent focus:ring-primary focus:bg-background active:bg-background transition-all duration-300"
                 ></textarea>
                 <input
                   type="checkbox"

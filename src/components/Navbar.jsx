@@ -19,13 +19,17 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: '#home', text: 'Home' },
     { href: '#about', text: 'About' },
     { href: '#services', text: 'Services' },
     { href: '#team', text: 'Team' },
-    {href:'#projects',text:'Projects'},
+    { href: '#projects',text:'Projects'},
+    { href: '#clients',text:'Clients'},
     { href: '#contact', text: 'Contact' },
   ];
+
+  const navigatetohome = () => {
+    window.location.href = '#home';
+  };
 
   return (
     <header
@@ -36,13 +40,14 @@ const Navbar = () => {
     }`}
   >
   
-      <div className="container mx-auto flex justify-between items-center p-3 md:p-4">
+      <div className="container mx-auto flex justify-between items-center p-1.5 md:py-2 md:px-4">
           <img
       src={logo}
       width={50}
       height={50}
       alt="logo"
-      className="object-contain rounded-full"
+      className="object-contain rounded-full cursor-pointer"
+      onClick={navigatetohome}
     />
        
         <nav className="hidden md:flex space-x-6 ">

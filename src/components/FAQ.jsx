@@ -1,4 +1,6 @@
-import React, { useState,useEffect,useRef } from 'react';
+import React, { useState } from 'react';
+import { FaPlus, FaMinus } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqData = [
   {
@@ -21,47 +23,52 @@ const faqData = [
     answer:
       "We serve a wide range of industries including finance, healthcare, education, and e-commerce.",
   },
+  {
+    question: "Do we provide post-launch support?",
+    answer:
+      "Yes, we offer comprehensive support and maintenance plans to ensure your digital solutions remain up-to-date and perform optimally after launch.",
+  },
 ];
 
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
-    const contentRef = useRef(null);
-    const [height, setHeight] = useState(0);
-  
-    useEffect(() => {
-      if (isOpen && contentRef.current) {
-        setHeight(contentRef.current.scrollHeight);
-      } else {
-        setHeight(0);
-      }
-    }, [isOpen]);
-  
-    return (
-      <div className="w-full border-b border-gray-300 px-4 sm:px-6 md:px-8 lg:px-10 py-6">
-        <button
-          onClick={onClick}
-          className="w-full flex justify-between items-center text-left transition-colors duration-200"
+  return (
+    <motion.div 
+      initial={false}
+      className={`w-full border-b border-gray-200 py-6 mb-2 transition-colors duration-300 ${isOpen ? 'bg-tertiary/20 rounded-2xl px-8 shadow-sm border-transparent' : 'px-4 sm:px-6'}`}
+    >
+      <button
+        onClick={onClick}
+        className="w-full flex justify-between items-center text-left"
+      >
+        <span className={`text-lg sm:text-xl font-bold font-header transition-colors duration-300 ${isOpen ? 'text-secondary' : 'text-primary'}`}>
+          {question}
+        </span>
+        <motion.span 
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          className="text-primary"
         >
-          <span className="text-lg font-semibold text-primary">{question}</span>
-          <span className="text-xl font-bold text-text">{isOpen ? '-' : '+'}</span>
-        </button>
-  
-        <div
-          ref={contentRef}
-          className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]`}
-          style={{ maxHeight: `${height}px` }}
-        >
-          <div
-            className={`transition-all duration-500 ease-in-out transform ${
-              isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
-            }`}
+          {isOpen ? <FaMinus size={18} /> : <FaPlus size={18} />}
+        </motion.span>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="overflow-hidden"
           >
-            <p className="mt-2 text-secondary">{answer}</p>
-          </div>
-        </div>
-      </div>
-    );
-  };
-  
+            <p className="mt-6 text-text text-lg leading-relaxed font-body border-l-4 border-secondary pl-6">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -71,22 +78,42 @@ const FAQ = () => {
   };
 
   return (
-    <section id='faqs' className="bg-background py-16 px-4 sm:px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold font-header text-primary">Frequently Asked Questions</h2>
-          <p className="text-secondary font-body mt-2">Everything you need to know</p>
-        </div>
-      <div className="space-y-4">
+    <section id='faqs' className="bg-background py-24 px-4 sm:px-6 md:px-12 lg:px-24 max-w-7xl mx-auto overflow-hidden">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-20"
+      >
+        <h2 className="text-3xl sm:text-4xl font-bold font-header text-primary uppercase tracking-tight">Got Questions?</h2>
+        <div className="w-20 h-1 bg-secondary mx-auto mt-6 rounded-full"></div>
+        <p className="text-secondary font-body mt-6 text-md sm:text-xl max-w-2xl mx-auto opacity-80">
+          Common queries answered to help you understand our process and services better.
+        </p>
+      </motion.div>
+      
+      <motion.div 
+        layout
+        className="space-y-4 max-w-4xl mx-auto"
+      >
         {faqData.map((item, index) => (
-          <FAQItem
+          <motion.div
             key={index}
-            question={item.question}
-            answer={item.answer}
-            isOpen={openIndex === index}
-            onClick={() => toggleFAQ(index)}
-          />
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <FAQItem
+              question={item.question}
+              answer={item.answer}
+              isOpen={openIndex === index}
+              onClick={() => toggleFAQ(index)}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

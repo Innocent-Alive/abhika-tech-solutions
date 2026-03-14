@@ -20,11 +20,21 @@ const App = () => {
   const mainRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleLoad = () => {
       setLoading(false);
-    }, 1500); // Simulate loading for 1.5 seconds
+    };
 
-    return () => clearTimeout(timer);
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+      // Fallback timer to ensure page shows eventually
+      const fallback = setTimeout(handleLoad, 5000);
+      return () => {
+        window.removeEventListener("load", handleLoad);
+        clearTimeout(fallback);
+      };
+    }
   }, []);
 
   useEffect(() => {
