@@ -67,7 +67,7 @@ const Contact = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-primary uppercase tracking-tight font-header">Get In Touch</h2>
           <p className="text-secondary mt-2 text-sm sm:text-base font-body opacity-80">We'd love to hear from you!</p>
         </div>
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="bg-primary text-white p-8 rounded-xl shadow-xl">
             <h3 className="text-2xl sm:text-3xl font-bold mb-6">
               Contact Information

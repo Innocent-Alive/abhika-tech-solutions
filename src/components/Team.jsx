@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import {
   FaGithub,
   FaLinkedin,
+  FaGlobeAsia,
   FaArrowLeft,
   FaArrowRight,
 } from "react-icons/fa";
@@ -20,6 +21,7 @@ const teamMembers = [
     social: {
       github: "https://github.com/Abhay-Kumar-Das",
       linkedin: "https://www.linkedin.com/in/innocent-alive/",
+      website: "https://abhaykumardas.netlify.app/",
     },
   },
    {
@@ -29,6 +31,7 @@ const teamMembers = [
     social: {
       github: "https://github.com/9102004Harshika",
       linkedin: "https://in.linkedin.com/in/harshikagawade",
+      website: "https://harshikagawade09.netlify.app/",
     },
   },
    
@@ -39,6 +42,7 @@ const teamMembers = [
     social: {
       github: "https://github.com/palakash26",
       linkedin: "https://www.linkedin.com/in/akash-pal-29b198279/",
+      website: "https://palakash.netlify.app/",
     },
   },
   {
@@ -96,6 +100,17 @@ const TeamCard = ({ member }) => (
         >
           <FaLinkedin size={24} />
         </motion.a>
+        {member.social.website && (
+          <motion.a
+            whileHover={{ scale: 1.2, color: "var(--color-secondary)" }}
+            href={member.social.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text transition-colors duration-300"
+          >
+            <FaGlobeAsia size={24} />
+          </motion.a>
+        )}
       </div>
     </div>
   </motion.div>

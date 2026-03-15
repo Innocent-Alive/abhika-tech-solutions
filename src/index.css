@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+
 @font-face {
   font-family: 'Raleway';
   src: url("./assets/Raleway-Medium.ttf");

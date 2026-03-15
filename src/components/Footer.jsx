@@ -111,12 +111,18 @@ import {
   FaLinkedin,
   FaTwitter,
   FaTimes,
+  FaArrowUp,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 import logo from "../assets/logo.png";
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({ title: "", content: "" });
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const openModal = (e, type) => {
     e.preventDefault();
@@ -162,9 +168,23 @@ const Footer = () => {
     setIsModalOpen(true);
   };
 
+  const navLinksCol1 = [
+    { href: "#about", text: "About" },
+    { href: "#services", text: "Services" },
+    { href: "#team", text: "Team" },
+    { href: "#testimonial", text: "Testimonials" },
+    { href: "#contact", text: "Contact" },
+  ];
+
+  const navLinksCol2 = [
+    { href: "#faqs", text: "FAQs" },
+    { href: "#t&c", text: "Terms & Conditions", type: "tc" },
+    { href: "#policy", text: "Our Policies", type: "policy" },
+  ];
+
   return (
     <>
-      <footer className="bg-primary text-white">
+      <footer className="bg-primary text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center sm:text-left">
             {/* Logo & Description */}
@@ -184,17 +204,32 @@ const Footer = () => {
             <div>
               <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
               <div className="flex justify-center sm:justify-start gap-10">
-                <ul className="space-y-2">
-                  <li><a href="#about" className="hover:text-tertiary">About</a></li>
-                  <li><a href="#services" className="hover:text-tertiary">Services</a></li>
-                  <li><a href="#team" className="hover:text-tertiary">Team</a></li>
-                  <li><a href="#testimonial" className="hover:text-tertiary">Testimonials</a></li>
-                  <li><a href="#contact" className="hover:text-tertiary">Contact</a></li>
+                <ul className="space-y-3">
+                  {navLinksCol1.map((link, idx) => (
+                    <li key={idx}>
+                      <a 
+                        href={link.href} 
+                        className="group flex items-center justify-center sm:justify-start hover:text-tertiary transition-colors duration-300"
+                      >
+                        <span>{link.text}</span>
+                        <span className="w-1.5 h-1.5 bg-secondary rounded-full ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
-                <ul className="space-y-2">
-                  <li><a href="#faqs" className="hover:text-tertiary">FAQs</a></li>
-                  <li><a href="#t&c" onClick={(e) => openModal(e, 'tc')} className="hover:text-tertiary cursor-pointer">Terms & Conditions</a></li>
-                  <li><a href="#policy" onClick={(e) => openModal(e, 'policy')} className="hover:text-tertiary cursor-pointer">Our Policies</a></li>
+                <ul className="space-y-3">
+                  {navLinksCol2.map((link, idx) => (
+                    <li key={idx}>
+                      <a 
+                        href={link.href} 
+                        onClick={link.type ? (e) => openModal(e, link.type) : undefined}
+                        className="group flex items-center justify-center sm:justify-start hover:text-tertiary transition-colors duration-300 cursor-pointer"
+                      >
+                        <span>{link.text}</span>
+                        <span className="w-1.5 h-1.5 bg-secondary rounded-full ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -227,9 +262,23 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Footer Bottom */}
-          <div className="border-t border-tertiary mt-10 pt-6 text-center text-tertiary text-sm">
-            &copy; {new Date().getFullYear()} Abhika Tech Solution. All Rights Reserved.
+          <div className="relative mt-10">
+            {/* Scroll to Top Button */}
+            <div className="flex justify-center mb-6">
+              <motion.button
+                whileHover={{ scale: 1.1, backgroundColor: "var(--color-secondary)", color: "var(--color-primary)" }}
+                whileTap={{ scale: 0.9 }}
+                onClick={scrollToTop}
+                className="p-4 bg-tertiary/20 rounded-full text-white shadow-lg border border-white/10 transition-all duration-300 flex items-center justify-center group"
+              >
+                <FaArrowUp size={20} className="group-hover:animate-bounce" />
+              </motion.button>
+            </div>
+
+            {/* Footer Bottom */}
+            <div className="border-t border-tertiary pt-6 text-center text-tertiary text-sm">
+              &copy; {new Date().getFullYear()} Abhika Tech Solution. All Rights Reserved.
+            </div>
           </div>
         </div>
       </footer>

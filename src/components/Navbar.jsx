@@ -40,13 +40,11 @@ const Navbar = () => {
     }`}
   >
   
-      <div className="container mx-auto flex justify-between items-center p-1.5 md:py-2 md:px-4">
+      <div className="container mx-auto flex justify-between items-center py-1.5 px-4 md:py-2 md:px-4">
           <img
       src={logo}
-      width={50}
-      height={50}
       alt="logo"
-      className="object-contain rounded-full cursor-pointer"
+      className="object-contain rounded-full cursor-pointer w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]"
       onClick={navigatetohome}
     />
        

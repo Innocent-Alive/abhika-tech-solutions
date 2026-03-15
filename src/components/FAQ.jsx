@@ -78,7 +78,15 @@ const FAQ = () => {
   };
 
   return (
-    <section id='faqs' className="bg-background py-24 px-4 sm:px-6 md:px-12 lg:px-24 max-w-7xl mx-auto overflow-hidden">
+    <section id='faqs' className="bg-background py-24 px-4 sm:px-6 md:px-12 lg:px-24 max-w-7xl mx-auto overflow-hidden relative">
+      {/* Sharp Star Pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23007C91' d='M256 0 L275 235 L512 256 L275 277 L256 512 L237 277 L0 256 L237 235 Z'/%3E%3C/svg%3E")`,
+          backgroundSize: '50px 50px' 
+        }}
+      ></div>
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
